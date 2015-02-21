@@ -120,6 +120,8 @@ class Image extends File {
 
         $newResource = imagecreatetruecolor($width , $height);
         imagecopyresampled($newResource, $this->getResource(), 0, 0, 0, 0, $width, $height, $this->getWidth(), $this->getHeight());
+        $col = imagecolorallocate($newResource, 0, 0, 0 );
+        imagecolortransparent($newResource, $col);
         $this->setWidth($width);
         $this->setHeight($height);
         imagedestroy($this->getResource());
